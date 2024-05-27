@@ -4,3 +4,6 @@ getters
 
 this.$store.commit('increment') // memanggil mutations
 this.$store.dispatch('increment') // memanggil actions
+
+...mapGetters();
+...mapActions();
