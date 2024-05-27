@@ -19,6 +19,7 @@ const store = createStore({
     },
     actions: {
         increment(context) { // nama method action bisa sama dengan mutation
+            console.log(context);
             setTimeout(function () {
                 context.commit('increment') // memanggil method mutation
             }, 2000);
