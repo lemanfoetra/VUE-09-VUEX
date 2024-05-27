@@ -7,6 +7,7 @@ const store = createStore({
     state() {
         return {
             counter: 0,
+            isLogin: false,
         };
     },
     mutations: {
@@ -15,17 +16,26 @@ const store = createStore({
         },
         increase(state, payload) {
             state.counter = state.counter - payload.value
+        },
+        setAuth(state, payload) {
+            state.isLogin = payload.isAuth
         }
     },
     actions: {
         increment(context) { // nama method action bisa sama dengan mutation
             // console.log(context);
             // setTimeout(function () {
-                context.commit('increment') // memanggil method mutation
+            context.commit('increment') // memanggil method mutation
             // }, 2000);
         },
         increase(context, payload) {
             context.commit('increase', payload)
+        },
+        login(context) {
+            context.commit('setAuth', { isAuth: true })
+        },
+        logout(context) {
+            context.commit('setAuth', { isAuth: false })
         }
     },
     getters: {
@@ -41,6 +51,9 @@ const store = createStore({
                 return 100
             }
             return finalCounter
+        },
+        userIsAuth(state) {
+            return state.isLogin;
         }
     }
 })
