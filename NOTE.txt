@@ -7,3 +7,11 @@ this.$store.dispatch('increment') // memanggil actions
 
 ...mapGetters();
 ...mapActions();
+
+namespaced: true, // KETIKA ini diterapkan maka pemanggilan harus pake namespaced (key module) nya
+                    // contoh key namespacednya = 'numbers' maka pemanggilannya : 
+                    //          ...mapActions('numbers', ['increment', 'increase'])
+                    //          return this.$store.getters['numbers/normalCounter']
+                    //          ...mapGetters('numbers', ['finalCounter'])
+                    //          this.$store.dispatch('numbers/logout')
+                    //          this.$store.dispatch('numbers/increase', { value: 1 })
