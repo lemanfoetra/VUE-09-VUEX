@@ -3,12 +3,11 @@ import { createStore } from 'vuex';
 
 import App from './App.vue';
 
-const store = createStore({
+const counterModule = {
     state() {
         return {
             counter: 0,
-            isLogin: false,
-        };
+        }
     },
     mutations: {
         increment(state) {
@@ -55,7 +54,21 @@ const store = createStore({
         userIsAuth(state) {
             return state.isLogin;
         }
-    }
+    },
+}
+
+const store = createStore({
+    modules: {
+        numberes: counterModule,
+    },
+    state() {
+        return {
+            isLogin: false,
+        };
+    },
+    mutations: {},
+    actions: {},
+    getters: {}
 })
 
 const app = createApp(App);
